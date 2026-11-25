@@ -86,6 +86,9 @@ footer{position:sticky;bottom:0;background:var(--navy);z-index:2;padding-bottom:
  .big{padding:12px 24px}textarea{min-height:70px;margin-top:10px;padding:12px 16px}.stamp{width:104px;margin-bottom:8px}
  .track{margin-bottom:0}footer{padding-top:6px;padding-bottom:0}body.home footer,body.done footer{display:none}
 }
+/* room for the host badge, bottom right, so it never covers Next/Skip */
+html.badge footer{padding-bottom:62px}
+html.badge body.home main,html.badge body.done main{padding-bottom:62px}
 @media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}}
 </style></head>
 <body class="home">
@@ -100,6 +103,7 @@ footer{position:sticky;bottom:0;background:var(--navy);z-index:2;padding-bottom:
 <g id="prop2"></g></svg></div></main>
 <footer><div class="track hide" id="track"><i></i></div><div class="nav hide" id="nav"><button id="back" type="button">← Back</button><span id="count"></span><button id="next" type="button">Skip →</button></div></footer>
 <script>
+if(/\.netlify\.app$/.test(location.hostname))document.documentElement.classList.add('badge');
 const ACTION='https://docs.google.com/forms/d/e/1FAIpQLSf5_HSkoKOMyOHEfepnXl7dFy50DYcvArqxiI5DGHMjwuUvfw/formResponse';
 const freq=['Always','Often','Sometimes','Rarely','Never'];
 const Q=[
